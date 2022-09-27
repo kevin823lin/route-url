@@ -9,7 +9,7 @@
             fetch(`routes.json?t=${Date.now()}`)
                 .then(response => response.json())
                 .then(routes => {
-                    var fragment = location.pathname.split('/').pop();
+                    var fragment = decodeURIComponent(location.pathname.split('/').pop());
                     var url = routes[fragment];
                     console.log(`${fragment}, ${url}`);
                     location.href = url ? url : './index.html';
